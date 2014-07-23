@@ -1,0 +1,61 @@
+require 'spec_helper'
+
+describe User do
+  
+  before { @user = User.new(name: "Example User",
+                              email: "user@example.com") }
+  
+  subject { @user }
+  
+  it { should respond_to(:name) }
+  it { should respond_to(:email) }
+  it { should respond_to(:password_digest) }
+  
+  it { should be_valid }
+  
+  describe "если имя указанно неверно" do
+    before { @user.name = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "если адрес эл. почты указан неверно" do
+    before { @user.email = " " }
+    it { should_not be_valid }
+  end
+  
+  describe "если имя превышает длину" do
+    before { @user.name = "a" * 51 }
+    it { should_not be_valid }
+  end
+  
+  describe "если формат email невалиден" do
+    it "должен считаться недействительным" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                     foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_address|
+        @user.email = invalid_address
+        expect(@user).not_to be_valid
+      end
+    end
+  end
+
+  describe "если формат email валиден" do
+    it "должен считаться действительным" do
+      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses.each do |valid_address|
+        @user.email = valid_address
+        expect(@user).to be_valid
+      end
+    end
+  end
+  
+  describe "если email адрес уже занят" do
+    before do
+      user_with_same_email = @user.dup
+      user_with_same_email.email = @user.email.upcase
+      user_with_same_email.save
+    end
+
+    it { should_not be_valid }
+  end  
+end
