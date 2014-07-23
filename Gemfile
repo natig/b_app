@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
   #gem 'rspec', '2.14'
-  gem "rspec-rails", '~> 2.14'
+  gem "rspec-rails", '~> 2.14.0.rc1'
   gem 'spork-rails', '4.0.0'
   gem 'childprocess', '0.5.3'
   gem 'spring', '~> 1.1.3'
