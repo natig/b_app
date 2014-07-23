@@ -13,15 +13,16 @@ gem 'jquery-rails', '~> 3.1.1'
 gem 'turbolinks', '~> 2.2.2'
 gem 'jbuilder', '~> 2.0'
 
-gem 'httparty', '~> 0.13.1'
-gem 'devise', '~> 3.2.4'
+#gem 'httparty', '~> 0.13.1'
+#gem 'devise', '~> 3.2.4'
 
 group :development, :test do
-  gem "rspec-rails", '~> 2.14.0.rc1'
+  #gem 'rspec', '2.14'
+  gem "rspec-rails", '~> 2.14'
   gem 'spork-rails', '4.0.0'
   gem 'childprocess', '0.5.3'
   gem 'spring', '~> 1.1.3'
-#  gem 'debugger', '~> 1.6.8'
+  #gem 'debugger', '~> 1.6.8'
   gem 'capistrano-rails', '~> 1.1.1'
 end
 
