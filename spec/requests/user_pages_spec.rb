@@ -17,10 +17,10 @@ describe "Страницы пользователя" do
 
     describe "если информация валидна" do
       before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Имя",               with: "Example User"
+        fill_in "Электронный адрес", with: "user@example.com"
+        fill_in "Пароль",            with: "foobar"
+        fill_in "Повторение пароля", with: "foobar"
       end
 
       it "создается пользователь" do
