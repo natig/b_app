@@ -7,11 +7,21 @@ describe "Страницы пользователя" do
   describe "страница регистрации" do
     before { visit signup_path }
     
+    it { should have_title('Регистрация') }
+    it { should have_content('Регистрация') }
+    
     let(:submit) { "Создать аккаунт" }
     
     describe "если информация невалидна" do
       it "пользователь не создается" do
         expect { click_button submit }.not_to change(User, :count)
+      end
+      
+      describe "после отправки" do
+        before { click_button submit }
+        
+        it { should have_title('Регистрация') }
+        it { should have_content('error') }
       end
     end
 
@@ -25,6 +35,15 @@ describe "Страницы пользователя" do
 
       it "создается пользователь" do
         expect { click_button submit }.to change(User, :count).by(1)
+      end
+      
+      describe "после сохранения данных пользователя" do
+        before { click_button submit }
+        let(:user) { User.find_by(email: 'user@example.com') }
+        
+        it { should have_title(user.name) }
+        it { should have_selector('div.alert.alert-success',
+                                  text: "Добро") }
       end
     end
   end
