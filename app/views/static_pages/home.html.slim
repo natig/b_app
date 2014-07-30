@@ -3,12 +3,12 @@
   - if signed_in?  
 	 = link_to "Мой профиль", current_user, class: "btn btn-default"
 	 |
-	 = link_to "Закрыть сессию", signout_path, method: "delete",
+	 = link_to "Закрыть сессию", destroy_user_session_path, method: "delete",
 	                               class: "btn btn-default"
   - else
-	 = link_to "Зарегистрироваться!", signup_path,
+	 = link_to "Зарегистрироваться!", new_user_registration_path,
 	                               class: "btn btn-primary"
 	 |                                
-	 = link_to "Зайти под именем", signin_path,
+	 = link_to "Зайти под именем", new_user_session_path,
 	                               class: "btn btn-success"
   
