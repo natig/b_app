@@ -5,7 +5,7 @@ describe "Страницы пользователя" do
   subject { page }
 
   describe "страница регистрации" do
-    before { visit signup_path }
+    before { visit '/users/sign_up' }
     
     it { should have_title('Регистрация') }
     it { should have_content('Регистрация') }
@@ -29,8 +29,8 @@ describe "Страницы пользователя" do
       before do
         fill_in "Имя",               with: "Example User"
         fill_in "Электронный адрес", with: "user@example.com"
-        fill_in "Пароль",            with: "foobar"
-        fill_in "Повторение пароля", with: "foobar"
+        fill_in "Пароль",            with: "foobar123123"
+        fill_in "Повторение пароля", with: "foobar123123"
       end
 
       it "создается пользователь" do

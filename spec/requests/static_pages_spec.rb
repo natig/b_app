@@ -24,9 +24,9 @@ describe "Статические страницы" do
     describe "для зарегистрированных пользователей" do
       let(:user) { FactoryGirl.create(:user) }
       before do
-        visit signin_path
+        visit new_user_session_path
         fill_in "Электронный адрес",    with: user.email.upcase
-        fill_in "Пароль", with: user.password
+        fill_in "Пароль",               with: user.password
         click_button "Вход"
       end
       

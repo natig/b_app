@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
          
-  has_secure_password
+  #has_secure_password
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }

@@ -1,18 +1,22 @@
-<h2>Sign up</h2>
+<% provide(:title, "Регистрация") %>
+<h2>Регистрация</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email, "Имя" %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <div><%= f.label :name, "Имя" %><br />
+    <%= f.text_field :name, :value => "Test User", autofocus: true %></div>
+  
+  <div><%= f.label :email, "Электронный адрес" %><br />
+    <%= f.email_field :email, :value => "testing@gmail.com" %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div><%= f.label :password, "Пароль" %><br />
+    <%= f.password_field :password, :value => "foobar123123", autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+  <div><%= f.label :password_confirmation, "Повторение пароля" %><br />
+    <%= f.password_field :password_confirmation, :value => "foobar123123", autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Создать аккаунт" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

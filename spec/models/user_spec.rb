@@ -4,18 +4,19 @@ describe User do
   
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")    
+                     password: "foobar123123",
+                     password_confirmation: "foobar123123")    
   end
   
   subject { @user }
   
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
+  it { should respond_to(:encrypted_password) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
+  it { should respond_to(:current_sign_in_at) }
   
   it { should be_valid }
   
@@ -79,7 +80,7 @@ describe User do
   end
   
   describe "слишком короткий пароль" do
-    before { @user.password = @user.password_confirmation = "a" * 5 }
+    before { @user.password = @user.password_confirmation = "a" * 7 }
     it { should be_invalid }
   end
 

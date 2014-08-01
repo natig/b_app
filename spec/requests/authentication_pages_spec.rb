@@ -5,7 +5,7 @@ describe "Аутентификации" do
   subject { page }
   
   describe "Страница аутентификации" do
-    before { visit signin_path}
+    before { visit '/users/sign_in' }
     
     it { should have_title('Аутентификация') }
     it { should have_content('Вход') }
@@ -21,8 +21,8 @@ describe "Аутентификации" do
       let(:user) { FactoryGirl.create(:user) }
       before do
         fill_in "Электронный адрес", with: user.email.upcase
-	     fill_in "Пароль",            with: user.password
-	     click_button "Вход"
+	      fill_in "Пароль",            with: user.password
+	      click_button "Вход"
       end   
         it { should have_link('Главная') }
         it { should have_title(user.name) }
