@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :user, :controllers => { :registration => "sessions_controller.rb" },
+                    :path => '', :path_names => { :sign_in => "login",
+                                                  :sign_out => "logout",
+                                                  :sign_up => "register" }
   resources  :users
   resources  :sessions, only: [:new, :create, :destroy]
   
-  
   root 'static_pages#home'
+  devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
+  
+  #match '/sessions/user', to: 'devise/sessions#create', via: :post
   #match '/', to: '', via: 'get'
   
   #match '/signup',  to: 'users#new',        via: 'get'

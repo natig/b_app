@@ -5,7 +5,7 @@ describe "Страницы пользователя" do
   subject { page }
 
   describe "страница регистрации" do
-    before { visit '/users/sign_up' }
+    before { visit '/register' }
     
     it { should have_title('Регистрация') }
     it { should have_content('Регистрация') }

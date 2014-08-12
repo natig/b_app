@@ -5,7 +5,7 @@ describe "Аутентификации" do
   subject { page }
   
   describe "Страница аутентификации" do
-    before { visit '/users/sign_in' }
+    before { visit new_user_session_path }
     
     it { should have_title('Аутентификация') }
     it { should have_content('Вход') }
